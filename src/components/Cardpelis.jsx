@@ -1,4 +1,4 @@
-export default function Cardpelis({ pelicula }) {
+function Cardpelis({ pelicula }) {
   return (
     <div style={{ border: "1px solid #94eb13", padding: "1rem", margin: "1rem", width: "200px" }}>
       <img src={pelicula.imagen} alt={pelicula.titulo} style={{ width: "100%" }} />
@@ -8,3 +8,5 @@ export default function Cardpelis({ pelicula }) {
     </div>
   );
 }
+
+export default Cardpelis;

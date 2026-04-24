@@ -1,35 +1,97 @@
-import { useState } from "react";
+ import { useState } from "react";
 import Peliculas from "../components/Peliculas";
+import Registrar from "../components/Registrar"; 
 
-export default function Inicio() {
-  const [Pelis] = useState([
+function Inicio() {
+  const [peliculas] = useState([
     {
       id: 1,
-      titulo: "Oppenheimer",
+      titulo: "Bugonia",
       premio: "Oscar Mejor Película",
       apuestaMin: 2000,
-      imagen: "https://upload.wikimedia.org/wikipedia/en/4/4a/Oppenheimer_%282023%29.jpg"
+      imagen: "https://www.filmofilia.com/wp-content/uploads/2025/10/Bugonia.webp"
     },
     {
       id: 2,
-      titulo: "Poor Things",
-      premio: "Cannes Mejor Dirección",
+      titulo: "Frankenstein",
+      premio: "Oscar Mejor Película",
       apuestaMin: 1000,
-      imagen: "https://upload.wikimedia.org/wikipedia/en/7/7d/Poor_Things_poster.jpg"
+      imagen: "https://flyingfiddlesticks.com/wp-content/uploads/2025/11/frankenstein-movie-poster.jpg"
     },
     {
       id: 3,
-      titulo: "The Zone of Interest",
+      titulo: "Una batalla tras otra",
       premio: "Oscar Mejor Guion",
       apuestaMin: 1500,
-      imagen: "https://upload.wikimedia.org/wikipedia/en/2/2b/The_Zone_of_Interest_poster.jpg"
+      imagen: "https://www.mundiario.com/asset/thumbnail,1920,1080,center,center/media/cineseries/images/2026/01/04/2026010402353941565.png"
+    },
+    {
+      id: 4,
+      titulo: "Sueños de trenes",
+      premio: "Oscar Mejor Película",
+      apuestaMin: 3500,
+      imagen: "https://www.utreradigital.com/web/wp-content/uploads/2025/12/Suenos-de-trenes.jpg"
+    },
+     {
+      id: 5,
+      titulo: "Pecadores",
+      premio: "Oscar Mejor Película",
+      apuestaMin: 2500,
+      imagen: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgalV1vu5X9QAEMtF_wuAzx49r939138-W3yjnYMveMf-Brzax7R03hiDLYvn_bw74xgcCfX0pV2CDuZHeuf6pyml4e6skTfwfemFkW36liMMKCa3lxRzJHj9TeNo32LPIK_oe7Ujz0j2TN0THFULJBNh13ObQ_KueSUoCXHZbC59OdBFQhnZR10hhigO_Z/s800/pcdrs24.jpg"
     }
   ]);
 
+
+  const [mostrarRegistro, setMostrarRegistro] = useState(false);
+
+  
+  const [usuarios, setUsuarios] = useState([]);
+
+  
+  const agregarUsuario = (nuevoUsuario) => {
+    setUsuarios([...usuarios, nuevoUsuario]);
+    setMostrarRegistro(false); 
+  };
+
   return (
-    <div>
+    <div style={{ marginBottom: "3rem" }}>
       <h2>Películas Nominadas</h2>
-      <Peliculas Pelis={Pelis} />
+      <h2 type="I">Mejor Película</h2>
+      <Peliculas peliculas={peliculas} />
+
+      <button
+        onClick={() => setMostrarRegistro(true)}
+        style={{
+          marginTop: "1rem",
+          background: "#8aea29",
+          border: "none",
+          padding: "0.5rem 1rem",
+          cursor: "pointer",
+          color: "black"
+        }}
+      >
+        Registrar
+      </button>
+
+     
+      {mostrarRegistro && <Registrar onRegistrar={agregarUsuario} />}
+
+      
+      <h2>Usuarios Registrados</h2>
+      {usuarios.length === 0 ? (
+        <p>No hay usuarios registrados todavía.</p>
+      ) : (
+        <ul>
+          {usuarios.map((u) => (
+            <li key={u.id}>
+              <strong>{u.nombre}</strong> — {u.correo}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
+
+export default Inicio;
+

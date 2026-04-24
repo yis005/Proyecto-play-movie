@@ -1,17 +1,32 @@
-import { useState } from "react";
-import Peliculas from "../components/Peliculas";
-
-export default function Inicio() {
-  const [peliculasData] = useState([
-    { id: 1, titulo: "Oppenheimer", premio: "Oscar Mejor Película", apuestaMin: 2000, imagen: "..." },
-    { id: 2, titulo: "Poor Things", premio: "Cannes Mejor Dirección", apuestaMin: 1000, imagen: "..." },
-    { id: 3, titulo: "The Zone of Interest", premio: "Oscar Mejor Guion", apuestaMin: 1500, imagen: "..." }
-  ]);
-
+// Peliculas.jsx
+function Peliculas({ peliculas }) {
   return (
-    <div>
-      <h2>Películas Nominadas</h2>
-      <Peliculas peliculas={peliculasData} />
+    <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
+      {peliculas.map((peli) => (
+        <div
+          key={peli.id}
+          style={{
+            border: "1px solid #90ed2c",
+            borderRadius: "8px",
+            padding: "1rem",
+            background: "black",
+            color: "white",
+            width: "200px",
+            textAlign: "center"
+          }}
+        >
+          <img
+            src={peli.imagen}
+            alt={peli.titulo}
+            style={{ width: "100%", borderRadius: "4px" }}
+          />
+          <h3>{peli.titulo}</h3>
+          <p>{peli.premio}</p>
+          <p>Apuesta mínima: ${peli.apuestaMin}</p>
+        </div>
+      ))}
     </div>
   );
 }
+
+export default Peliculas;

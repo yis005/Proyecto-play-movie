@@ -1,7 +1,7 @@
 import supersaludLogo from "../assets/supersalud.png";
 import coljuegoslogo from "../assets/coljuegos.jpg"
 
-export default function Footer() {
+function Footer() {
   return (
 <footer style={{ background: "#000", padding: "1rem", textAlign: "center", color: "#fff" }}>
   <p>© 2026 Plataforma de Apuestas de Películas</p>
@@ -26,3 +26,4 @@ export default function Footer() {
 </footer>
   )
 }
+export default Footer;
