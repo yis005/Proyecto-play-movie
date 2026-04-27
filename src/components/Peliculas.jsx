@@ -1,4 +1,4 @@
-// Peliculas.jsx
+
 function Peliculas({ peliculas }) {
   return (
     <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>

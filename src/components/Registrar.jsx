@@ -8,13 +8,13 @@ function Registrar({ onRegistrar }) {
     contraseña: ""
   });
 
-  // Maneja cambios en los inputs
+ 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNuevoUsuario({ ...nuevoUsuario, [name]: value });
   };
 
-  // Envía el usuario al padre
+  // lo envio a Registro
   const handleSubmit = (e) => {
     e.preventDefault();
     onRegistrar(nuevoUsuario); 
@@ -68,15 +68,7 @@ function Registrar({ onRegistrar }) {
       />
 
       <button
-        type="submit"
-        style={{
-          marginTop: "1rem",
-          background: "#90ed2c",
-          border: "none",
-          padding: "0.5rem 1rem",
-          cursor: "pointer"
-        }}
-      >
+        type="submit">
         Registrarse
       </button>
     </form>
